@@ -1,5 +1,5 @@
-from constants import TEAMS
-from constants import PLAYERS
+import constants
+import copy
 
 
 #sudo
@@ -7,10 +7,23 @@ from constants import PLAYERS
 #while doing that clean the height, experiance, gaurdian
 
 
+new_players = copy.deepcopy(constants.PLAYERS)
+new_teams = copy.deepcopy(constants.TEAMS)
 
+def clean_data():
+    for player in new_players:
+        player['guardians'] = (','.join(player['guardians'].split(" and")))
+        
+        #cant figure out how to split the first two characters of the string
+        height = player["height"].split()
+        player["height"] = int(height[0])
 
+        if user["admin"] == "True":
+            fixed["admin"] = True
+        else:
+            fixed["admin"] = False
+        fixed["id"] = int(user["id"])
+        
 
-
-def cleaned_players(PLAYERS):
-    cleaned = []
-    for player in PLAYERS:
+clean_data()
+print(new_players)
