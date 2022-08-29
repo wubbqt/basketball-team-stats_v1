@@ -18,12 +18,9 @@ def clean_data():
         height = player["height"].split()
         player["height"] = int(height[0])
 
-        if user["admin"] == "True":
-            fixed["admin"] = True
+        if player["experience"] == "YES":
+            player["experience"] = True
         else:
-            fixed["admin"] = False
-        fixed["id"] = int(user["id"])
+            player["experience"] = "NO"
+        player["experience"] = False
         
-
-clean_data()
-print(new_players)
