@@ -30,11 +30,7 @@ def clean_data():
             player["experience"] = False
             experience_no.append(player)
 
-
 clean_data()
-
-
-#print(num_players_team)
 
 def balance_teams():
     panthers = []
@@ -54,9 +50,12 @@ def balance_teams():
 
     return panthers, warriors, bandits
 
-balance_teams()
 balanced_teams = balance_teams()
 print(balanced_teams)
+
+
+
+
 
 def main_menu():
     print("---MENU---")
