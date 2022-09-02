@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 import constants
 import copy
 import random
@@ -30,12 +31,12 @@ def clean_data():
             player["experience"] = False
             experience_no.append(player)
 
-clean_data()
 
 def balance_teams():
     panthers = []
     bandits = []
     warriors = []
+    all_teams = []
     random.shuffle(experience_yes)
     random.shuffle(experience_no)
     while experience_yes:
@@ -47,17 +48,41 @@ def balance_teams():
         warriors.append(experience_no.pop())
         bandits.append(experience_no.pop())
         panthers.append(experience_no.pop())
+    all_teams = [warriors, bandits, panthers]
+    return all_teams
 
-    return panthers, warriors, bandits
-
-balanced_teams = balance_teams()
-print(balanced_teams)
 
 
 
 
 
 def main_menu():
-    print("---MENU---")
-    menu1 = input("Here are your choices: \n A) Display Team Stats \n B) Quit\n")
-    print(menu1)
+    print("BASKETBALL TEAM STATS TOOL\n\n\n")
+    print("---MENU---\n\n")
+    
+    try:
+        while True:
+            menu1 = input(
+                "Here are your choices: \n A) Display Team Stats \n B) Quit\n")
+            if menu1 == "a" or "A":
+                team_choice()
+            if menu1 == "b" or "B":
+                print("Quiting Application")
+                break
+
+    except ValueError:
+        print("Invalid choicem, please try again.")
+        
+            
+
+
+
+            
+            
+def team_choice():
+    print("A) Panthers\nB) Bandits\nC) Warriors\n")
+
+            
+if __name__ == "__main__":
+    clean_data()
+    main_menu()
