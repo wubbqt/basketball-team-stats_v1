@@ -2,11 +2,6 @@ import constants
 import copy
 import random
 
-#sudo
-#take existing data from players and add it to a new dictionary in a list
-#while doing that clean the height, experiance, gaurdian
-
-
 new_players = copy.deepcopy(constants.PLAYERS)
 new_teams = copy.deepcopy(constants.TEAMS)
 experience_yes = []
@@ -18,8 +13,6 @@ warriors = []
 def clean_data():
     for player in new_players:
         player['guardians'] = (','.join(player['guardians'].split(" and")))
-        
-        #cant figure out how to split the first two characters of the string
         height = player["height"].split()
         player["height"] = int(height[0])
 
@@ -80,6 +73,7 @@ def team_stats(team):
     print(', '.join(names_players))
     print("Gaurdian Names: ")
     print(', '.join(gaurdians_team))
+    print("\n")
     
 
 
@@ -90,7 +84,7 @@ def main_menu():
                             "---MENU---\n\n"
                             "Here are your choices:\n"
                             "A) Display Team Stats\n"
-                            "B) Quit\n Enter an option: \n").upper()
+                            "B) Quit\n\n Enter an option: \n").upper()
         if user_option == "A":
             print(
                 "A) Panthers\n"
@@ -108,22 +102,13 @@ def main_menu():
                 print("\n\nDisplaying Bandits Stats")
                 team_stats(bandits)
             else:
-                print("Invalid Selection")
+                print("\n\nInvalid Selection, try again")
         elif user_option == "B":
             print("Okay bye...")
             break
         else:
             print("Invalid Selection")
-    
 
-
-
-
-
-#def team_stats():
-
-
-            
 if __name__ == "__main__":
     clean_data()
     balance_teams()
